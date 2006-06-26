@@ -1,0 +1,6 @@
+module rpcdigidqm = RPCMonitorDigi{
+	untracked string moduleLogName = "DigiModule"
+	untracked bool DigiDQMSaveRootFile = false
+	untracked int32 DigiEventsInterval = 100
+	untracked string RootFileNameDigi="RPCMonitorDigi.root"
+}	
