@@ -1,0 +1,6 @@
+module rpcsyncdqm = RPCMonitorSync{
+	untracked string moduleLogName = "SyncModule"
+	untracked bool   SyncDQMSaveRootFile = false
+	untracked int32  SyncEventsInterval = 100
+	untracked string RootFileNameSync="RPCMonitorSync.root"
+}	
