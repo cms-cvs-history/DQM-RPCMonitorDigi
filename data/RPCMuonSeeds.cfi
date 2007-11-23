@@ -1,0 +1,5 @@
+#STANDALONE MUON RECO
+module rpcMuonSeed = RPCSeedGenerator {
+    InputTag RPCRecHitsLabel = rpcRecHits
+}
+
