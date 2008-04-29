@@ -5,8 +5,8 @@
  *
  * Class for RPC Monitoring (strip id, cluster size).
  *
- *  $Date: 2008/02/24 12:52:05 $
- *  $Revision: 1.11 $
+ *  $Date: 2008/04/28 10:11:38 $
+ *  $Revision: 1.14 $
  *
  * \author Ilaria Segoni (CERN)
  *
@@ -38,22 +38,21 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 
 	virtual void beginJob(edm::EventSetup const&);
 	virtual void endJob(void);
-        
+        void beginRun(const edm::Run& r, const edm::EventSetup& c);
+
 	/// Booking of MonitoringElemnt for one RPCDetId (= roll)
-	std::map<std::string, MonitorElement*> bookDetUnitME(RPCDetId & detId);	
+	std::map<std::string, MonitorElement*> bookDetUnitME(RPCDetId& , const edm::EventSetup&);	
 	
 	
 	/// Booking of MonitoringElemnt at Wheel/Disk level
 	std::map<std::string, MonitorElement*> bookRegionRing(int region, int ring);
 
-       
-
-	
-
+      
 	
 
    private:
 	
+	int stripsInRoll(RPCDetId & ,const edm::EventSetup& );
 	int counter;
 	/// back-end interface
 	DQMStore * dbe;
@@ -70,10 +69,14 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 
 	MonitorElement * NumberofClusters_for_Barrel;
 
+	MonitorElement * SameBxDigisMe_;
         
 	std::map<uint32_t, std::map<std::string, MonitorElement*> >  meCollection;
         std::map<std::pair<int,int>, std::map<std::string, MonitorElement*> >  meWheelDisk;
 	
+
+	bool mergeRuns_;
+
 	std::string nameInLog;
 	bool saveRootFile;
 	int  saveRootFileEventsInterval;
