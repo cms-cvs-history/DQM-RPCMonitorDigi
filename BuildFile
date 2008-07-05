@@ -19,7 +19,7 @@
 <use name=TrackingTools/PatternTools>
 <use name=boost>
 <use name=CLHEP>
-<use name=root>
+<use name=rootgraphics>
 <export>
   <lib name=DQMRPCMonitorDigi>
   <use name=FWCore/Framework>
@@ -41,5 +41,5 @@
   <use name=TrackingTools/PatternTools>
   <use name=boost>
   <use name=CLHEP>
-  <use name=root>
+  <use name=rootgraphics>
 </export>
