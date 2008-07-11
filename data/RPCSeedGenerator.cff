@@ -1,5 +1,4 @@
 # Magnetic Field
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
 # Geometry
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff"
