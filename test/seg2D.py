@@ -52,7 +52,6 @@ process.museg = cms.EDFilter("MuonSegmentEff",
     EffRootFileName = cms.untracked.string('first.root'),
     EffSaveRootFileEventsInterval = cms.untracked.int32(100)
 )
-
 process.p = cms.Path(process.museg)
 
 process.DQM.collectorHost = ''
