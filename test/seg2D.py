@@ -16,18 +16,15 @@ process.load("DQMServices.Core.DQM_cfg")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.GlobalTag.connect = "frontier://PromptProd/CMS_COND_21X_GLOBALTAG"
-process.GlobalTag.globaltag = "CRUZET4_V5P::All"
+process.GlobalTag.globaltag = "CRUZET4_V6P::All"
 process.prefer("GlobalTag")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1000)
 )
 process.source = cms.Source("PoolSource",
-   fileNames = cms.untracked.vstring('/store/data/BeamCommissioning08/BeamHalo/RECO/v1/000/063/440/0058A079-D786-DD11-99CE-000423D952C0.root')
-)
-
-process.MessageLogger = cms.Service("MessageLogger",
-    destinations = cms.untracked.vstring('/tmp/carrillo/RPCEfficiency.log')
+#   fileNames = cms.untracked.vstring('//store/data/Commissioning08/Cosmics/RECO/v1/000/066/722/FE445906-729D-DD11-8E47-000423D99EEE.root')
+   fileNames = cms.untracked.vstring('file:/tmp/carrillo/promptrecoCosmics.root')
 )
 
 process.museg = cms.EDFilter("MuonSegmentEff",
@@ -41,7 +38,7 @@ process.museg = cms.EDFilter("MuonSegmentEff",
     
     DuplicationCorrection = cms.untracked.int32(1),
 	
-    rangestrips = cms.untracked.double(1.),
+    rangestrips = cms.untracked.double(4.),
     rangestripsRB4 = cms.untracked.double(4.),
     MinCosAng = cms.untracked.double(0.99),
     MaxD = cms.untracked.double(80.0),
@@ -52,17 +49,11 @@ process.museg = cms.EDFilter("MuonSegmentEff",
     dt4DSegments = cms.untracked.string('dt4DSegments'),
 
     EffSaveRootFile = cms.untracked.bool(True),
-    EffRootFileName = cms.untracked.string('/tmp/carrillo/RPCEfficiencyFIRST.root'),
+    EffRootFileName = cms.untracked.string('first.root'),
     EffSaveRootFileEventsInterval = cms.untracked.int32(100)
 )
 
-process.FEVT = cms.OutputModule("PoolOutputModule",
-    outputCommands = cms.untracked.vstring('keep *_MEtoEDMConverter_*_*'),
-    fileName = cms.untracked.string('/tmp/carrillo/output.root')
-)
-
-process.p = cms.Path(process.museg*process.MEtoEDMConverter)
-process.outpath = cms.EndPath(process.FEVT)
+process.p = cms.Path(process.museg)
 
 process.DQM.collectorHost = ''
 process.DQM.collectorPort = 9090
