@@ -23,8 +23,8 @@ process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000)
 )
 process.source = cms.Source("PoolSource",
-#   fileNames = cms.untracked.vstring('//store/data/Commissioning08/Cosmics/RECO/v1/000/066/722/FE445906-729D-DD11-8E47-000423D99EEE.root')
-   fileNames = cms.untracked.vstring('file:/tmp/carrillo/promptrecoCosmics.root')
+   fileNames = cms.untracked.vstring('//store/data/Commissioning08/Cosmics/RECO/v1/000/066/722/FE445906-729D-DD11-8E47-000423D99EEE.root')
+#    fileNames = cms.untracked.vstring('file:/tmp/carrillo/promptrecoCosmics.root')
 )
 
 process.museg = cms.EDFilter("MuonSegmentEff",
