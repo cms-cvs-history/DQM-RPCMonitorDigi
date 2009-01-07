@@ -1,7 +1,0 @@
-module rpcefficiencydqm = RPCMonitorEfficiency{	
-	untracked string moduleLogName = "EfficiencyModule"
-	untracked bool   EfficDQMSaveRootFile = false
-	untracked int32  EfficEventsInterval = 100
-	untracked string RootFileNameEfficiency="RPCMonitorEfficiency.root"
-        string recHits4DLabel = "dt4DSegments"
-}	
