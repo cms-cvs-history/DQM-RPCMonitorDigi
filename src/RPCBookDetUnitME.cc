@@ -23,8 +23,8 @@ map<string, MonitorElement*> RPCMonitorDigi::bookDetUnitME(RPCDetId & detId, con
     ring = detId.station();
   }
 
-  RPCBookFolderStructure *  folderStr = new RPCBookFolderStructure();
-  string folder = "RPC/RecHits/" +  folderStr->folderStructure(detId);
+  //  RPCBookFolderStructure *  folderStr = new RPCBookFolderStructure();
+  string folder = "RPC/RecHits/" +  RPCBookFolderStructure::folderStructure(detId);
 
   dbe->setCurrentFolder(folder);
   
