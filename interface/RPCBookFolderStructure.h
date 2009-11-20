@@ -1,7 +1,7 @@
 /** \class RPCBookFolderStructure
  *
- *  $Date: 2008/09/28 16:54:20 $
- *  $Revision: 1.2 $
+ *  $Date: 2009/01/09 17:41:30 $
+ *  $Revision: 1.3 $
  * \author Anna Cimmino (INFN Napoli)
  *
  * Create folder structure for DQM histo saving
@@ -14,10 +14,10 @@
 #include <sstream>
 class RPCBookFolderStructure {
    public:
-      explicit RPCBookFolderStructure() {};
-      ~RPCBookFolderStructure(){};
+  //      explicit RPCBookFolderStructure() {};
+  //  ~RPCBookFolderStructure(){};
 
-      std::string folderStructure(RPCDetId detId){ 
+    static  std::string folderStructure(RPCDetId detId){ 
 	
 	std::stringstream myStream ;
 	myStream.str("");
