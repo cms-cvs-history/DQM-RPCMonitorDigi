@@ -70,12 +70,6 @@ map<string, MonitorElement*> RPCMonitorDigi::bookDetUnitME(RPCDetId & detId, con
     os.str("");
     os<<"BXWithData_"<<nameRoll;
     meMap[os.str()] = dbe->book1D(os.str(), os.str(), 10, 0.5, 10.5);
-
-    /// RPCRecHits
-
-    os.str("");
-    os<<"RecHitCounter_"<<nameRoll;
-    meMap[os.str()] = dbe->book1D(os.str(), os.str(),20,0.5,20.5);
   }
   
   if (dqmsuperexpert) {    
