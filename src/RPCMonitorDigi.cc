@@ -314,7 +314,6 @@ void RPCMonitorDigi::analyze(const Event& iEvent,const EventSetup& iSetup ){
     if(recHitCollection.first!=recHitCollection.second ){   
  
       RPCRecHitCollection::const_iterator it;
-      int numberOfHits=0;    
       int numbOfClusters=0;
       //loop RPCRecHits for given roll
       for (it = recHitCollection.first; it != recHitCollection.second ; it++) {
@@ -367,20 +366,14 @@ void RPCMonitorDigi::analyze(const Event& iEvent,const EventSetup& iSetup ){
 	  if(meMap[os.str()])
 	    meMap[os.str()]->Fill(mult);
 	}
-	numberOfHits++;
       }/// end loop on RPCRecHits for given roll
       
       if(dqmexpert) {	 
+	if(numbOfClusters>20) numbOfClusters=20;
 	os.str("");
 	os<<"NumberOfClusters_"<<nameRoll;
 	if(meMap[os.str()])
 	  meMap[os.str()]->Fill(numbOfClusters);
-	
-	if(numberOfHits>5) numberOfHits=16;////////////!!!!!!!!!!!!!!!!!!!!!!!	
-	os.str("");
-	os<<"RecHitCounter_"<<nameRoll;
-	if(meMap[os.str()])
-	  meMap[os.str()]->Fill(numberOfHits);
       }
       
       if(detId.region()==0)
