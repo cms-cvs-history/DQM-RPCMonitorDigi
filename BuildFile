@@ -11,8 +11,6 @@
 <use name=FWCore/MessageLogger>
 <use name=FWCore/ServiceRegistry>
 <use name=Geometry/RPCGeometry>
-<use name=Geometry/CSCGeometry>
-<use name=Geometry/DTGeometry>
 <use name=RecoMuon/DetLayers>
 <use name=TrackingTools/TransientTrack>
 <use name=TrackingTools/TrajectoryParametrization>
@@ -36,8 +34,6 @@
 <use name=FWCore/MessageLogger>
 <use name=FWCore/ServiceRegistry>
 <use name=Geometry/RPCGeometry>
-<use name=Geometry/CSCGeometry>
-<use name=Geometry/DTGeometry>
 <use name=RecoMuon/DetLayers>
 <use name=TrackingTools/TransientTrack>
 <use name=TrackingTools/TrajectoryParametrization>
