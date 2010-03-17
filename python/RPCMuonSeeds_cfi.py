@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 #STANDALONE MUON RECO
-rpcMuonSeed = cms.EDProducer("RPCSeedGenerator",
+rpcMuonSeed = cms.EDFilter("RPCSeedGenerator",
     RPCRecHitsLabel = cms.InputTag("rpcRecHits")
 )
 
