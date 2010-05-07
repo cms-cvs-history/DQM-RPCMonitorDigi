@@ -57,16 +57,15 @@ map<string, MonitorElement*> RPCMonitorDigi::bookDetUnitME(RPCDetId & detId, con
     os<<"ClusterSize_"<<nameRoll;
     meMap[os.str()] = dbe->book1D(os.str(), os.str(), 20, 0.5, 20.5);
    dbe->tag( meMap[os.str()],  rpcdqm::CLUSTERSIZE);
- //    os.str("");
+   //os.str("");
 //     os<<"NumberOfClusters_"<<nameRoll;
 //     meMap[os.str()] = dbe->book1D(os.str(), os.str(), 10, 0.5, 10.5);
 
     os.str("");
-    os<<"NumberOfDigi_"<<nameRoll;
+    os<<"Multiplicity_"<<nameRoll;
     meMap[os.str()] = dbe->book1D(os.str(), os.str(), 50, 0.5, 50.5);
     dbe->tag( meMap[os.str()],  rpcdqm::MULTIPLICITY);
 
-    
     os.str("");
     os<<"BXWithData_"<<nameRoll;
     meMap[os.str()] = dbe->book1D(os.str(), os.str(), 10, 0.5, 10.5);
@@ -74,7 +73,7 @@ map<string, MonitorElement*> RPCMonitorDigi::bookDetUnitME(RPCDetId & detId, con
     /// RPCRecHits
 
     os.str("");
-    os<<"RecHitCounter_"<<nameRoll;
+    os<<"NumberOfClusters_"<<nameRoll;
     meMap[os.str()] = dbe->book1D(os.str(), os.str(),20,0.5,20.5);
   }
   
@@ -183,13 +182,15 @@ map<string, MonitorElement*> RPCMonitorDigi::bookRegionRing(int region, int ring
     os.str("");
     os<<"Occupancy_Roll_vs_Sector_"<<ringType<<"_"<<ring;                                      // new Occupancy Roll vs Sector
     meMap[os.str()] = dbe->book2D(os.str(), os.str(), 12, 0.5,12.5, 21, 0.5, 21.5);
+    for(int i = 1 ; i< 13; i++ ){
+      label.str("");
+      label<<"Sec"<<i;
+      meMap[os.str()] ->setBinLabel(i, label.str(), 1);
+    }
     for(int i=1; i<22; i++) {
-      meMap[os.str()] ->setBinLabel(i, mylabel.YLabel(i), 2);
-      if(i<13) {
-	label.str("");
-	label<<"Sec"<<i;
-	meMap[os.str()] ->setBinLabel(i, label.str(), 1);
-      }
+      if((ring == 2 || ring == -2) && i == 7) 
+	meMap[os.str()] ->setBinLabel(i, mylabel.YLabel(i), 2);
+      else  meMap[os.str()] ->setBinLabel(i, mylabel.YLabel(0), 2);
     }
   } //end of Barrel 
     
