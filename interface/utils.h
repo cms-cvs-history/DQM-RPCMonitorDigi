@@ -7,7 +7,6 @@
 #include <vector>
 #include <iomanip>
 #include <string>
-using namespace std;
 
 namespace rpcdqm{
 
@@ -59,17 +58,17 @@ namespace rpcdqm{
 	  }
 	} else if(_id.station()==4) {//Station 4
 	  if (_id.sector()== 4) {	  
-	    if ( _id.subsector()==2){//RB4--
+	    if ( _id.subsector()==1){//RB4--
 	      if(_id.roll()==1)
 		_cnr=14;
 	      else
 		_cnr=15;
-	    }else if (_id.subsector()==3){//RB4-
+	    }else if (_id.subsector()==2){//RB4-
 	      if(_id.roll()==1)
 		_cnr=16;
 	      else
 		_cnr=17;
-	    }else  if ( _id.subsector()==1) {//RB4+
+	    }else  if ( _id.subsector()==3) {//RB4+
 	      if(_id.roll()==1)
 		_cnr=18;
 	      else
@@ -157,33 +156,35 @@ namespace rpcdqm{
       
       ylabel[7] = "RB2in_M";
       ylabel[0] = "RB2out_M";
-      
+
+
       ylabel[8] = "RB2out_B";
       ylabel[9] = "RB2out_F";
       ylabel[10] = "RB3-_B";
       ylabel[11] = "RB3-_F";
       ylabel[12] = "RB3+_B";
       ylabel[13] = "RB3+_F";
-      ylabel[14] = "RB4,-_B";
-      ylabel[15] = "RB4,-_F";
-      ylabel[16] = "RB4+_B";
-      ylabel[17] = "RB4+_F";
-      ylabel[18] = "RB4--_B";
-      ylabel[19] = "RB4--_F";
+      ylabel[14] = "RB4,-,--_B";
+      ylabel[15] = "RB4,-,--_F";
+      ylabel[16] = "RB4+,-+_B";
+      ylabel[17] = "RB4+,-+_F";
+      ylabel[18] = "RB4+-_B";
+      ylabel[19] = "RB4+-_F";
       ylabel[20] = "RB4++_B";
       ylabel[21] = "RB4++_F";
+
     }
 
 
     void doEndcapLabeling(){          
 
-      string rolls[3];
+      std::string rolls[3];
       rolls[0]="A";
       rolls[1]="B";
       rolls[2]="C";
 
       endcapYLabels_.clear();
-      stringstream myLabel;
+      std::stringstream myLabel;
 
       for(int ring = 1 ; ring <=3; ring ++){
 	for(int ch = 1; ch<=6; ch++){
@@ -196,7 +197,7 @@ namespace rpcdqm{
       }
     }
 
-    string YLabel(int i) {
+    std::string YLabel(int i) {
 
       return ylabel[i];
       
@@ -207,7 +208,7 @@ namespace rpcdqm{
       //before do some checks
       if (!myMe) return;
 
-      stringstream xLabel;
+      std::stringstream xLabel;
 
       for(int x = 1; x<= myMe->getNbinsX(); x++){
 	xLabel.str("");
@@ -222,7 +223,7 @@ namespace rpcdqm{
       //before do some checks
       if (!myMe) return;
 
-      stringstream xLabel;
+      std::stringstream xLabel;
 
       myMe->setAxisTitle("Segments", 1);
 
@@ -268,7 +269,7 @@ namespace rpcdqm{
       //before do some checks
       if (!myMe) return;
 
-      string labels[9]= {"C", "Ring1 B", "A","C", "Ring2 B", "A","C", "Ring3 B", "A"};
+      std::string labels[9]= {"C", "Ring1 B", "A","C", "Ring2 B", "A","C", "Ring3 B", "A"};
       int startBin ;
       (numberOfRings == 2 ? startBin = 3: startBin = 0);
  
@@ -361,18 +362,18 @@ std::string detId2ChamberLabel(const RPCDetId & _id){
 	  if (_id.sector()== 4) {	  
 	    if ( _id.subsector()==1){
 	      
-	      ChLabel="RB4-";
+	      ChLabel="RB4--";
 	      
 	    }else if (_id.subsector()==2){
-	      ChLabel="RB4+";
+	      ChLabel="RB4-+";
 	    }else  if ( _id.subsector()==3) {
-	      ChLabel="RB4--";
+	      ChLabel="RB4+-";
 	    }else if ( _id.subsector()==4){
 	      ChLabel="RB4++";
 	    }
 	  } else {
 	    if(_id.subsector()==1) ChLabel="RB4-";
-	    else ChLabel="RB4-";
+	    else ChLabel="RB4+";
 	  } 
 	}
       }else{//Endcap
@@ -389,7 +390,7 @@ std::string detId2ChamberLabel(const RPCDetId & _id){
       std::string ChLabel;
       std::vector<int> Wvector2;
       std::vector<int> Wvector1;
-      string ylabel[22];
+      std::string ylabel[22];
   };
 }
 
