@@ -81,7 +81,7 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 
 	std::string nameInLog;
 	bool saveRootFile;
-	int  saveRootFileEventsInterval;
+	//	int  saveRootFileEventsInterval;
 	std::string RootFileName;
 	bool dqmshifter;
 	bool dqmexpert;
@@ -91,8 +91,8 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 	edm::ESHandle<RPCGeometry> rpcGeo;
 
 
-
-
+	edm::InputTag RPCRecHitLabel_;
+	edm::InputTag RPCDigiLabel_;
 
 };
 

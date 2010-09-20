@@ -8,7 +8,9 @@ rpcdigidqm = cms.EDAnalyzer("RPCMonitorDigi",
     dqmsuperexpert = cms.untracked.bool(False),
     DigiDQMSaveRootFile = cms.untracked.bool(False),
     dqmshifter = cms.untracked.bool(False),
-    RootFileNameDigi = cms.untracked.string('RPCMonitorDigi.root')
+    RootFileNameDigi = cms.untracked.string('RPCMonitorDigi.root'),
+    RecHitLabel = cms.InputTag("rpcRecHits"),
+    DigiLabel= cms.InputTag("muonRPCDigis")
 )
 
 
