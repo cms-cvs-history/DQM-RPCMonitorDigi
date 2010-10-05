@@ -171,7 +171,7 @@ map<string, MonitorElement*> RPCMonitorDigi::bookRegionRing(int region, int ring
   map<string, MonitorElement*> meMap;  
   string ringType = (region ==  0)?"Wheel":"Disk";
 
-  dbe->setCurrentFolder(GlobalHistogramsFolder);
+  dbe->setCurrentFolder(globalFolder_);
   stringstream os, label;
 
   rpcdqm::utils rpcUtils;

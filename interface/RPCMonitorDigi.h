@@ -5,8 +5,8 @@
  *
  * Class for RPC Monitoring (strip id, cluster size).
  *
- *  $Date: 2009/06/08 10:56:13 $
- *  $Revision: 1.24 $
+ *  $Date: 2009/12/18 20:44:48 $
+ *  $Revision: 1.25 $
  *
  * \author Ilaria Segoni (CERN)
  *
@@ -53,7 +53,8 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 	
 
    private:
-	
+	void makeDcsInfo(const edm::Event& ) ;
+
 	int stripsInRoll(RPCDetId & ,const edm::EventSetup& );
 	int counter;
 	/// DQM store 
@@ -104,8 +105,8 @@ class RPCMonitorDigi : public edm::EDAnalyzer {
 	edm::ESHandle<RPCGeometry> rpcGeo;
 
 
-
-
+	std::string globalFolder_;
+	bool dcs_;
 
 };
 
