@@ -150,7 +150,7 @@ void RPCMonitorDigi::endJob(void){
 
 
 void RPCMonitorDigi::analyze(const edm::Event& iEvent,const edm::EventSetup& iSetup ){
-  
+  dcs_ = true;
   this->makeDcsInfo(iEvent);
   if( !dcs_) return;//if RPC not ON there's no need to continue
 
