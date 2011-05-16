@@ -104,8 +104,8 @@ void RPCMonitorDigi::beginRun(const edm::Run& r, const edm::EventSetup& iSetup){
 	//booking all histograms
 	RPCGeomServ rpcsrv(rpcId);
 	std::string nameRoll = rpcsrv.name();
-	if(useMuonDigis_) meMuonCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, "Muon");
-	meNoiseCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, "Noise");
+	if(useMuonDigis_) meMuonCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, muonFolder_);
+	meNoiseCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, noiseFolder_);
       }
     }
   }//end loop on geometry to book all MEs
