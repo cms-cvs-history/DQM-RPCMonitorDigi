@@ -104,8 +104,8 @@ void RPCMonitorDigi::beginRun(const edm::Run& r, const edm::EventSetup& iSetup){
 	//booking all histograms
 	RPCGeomServ rpcsrv(rpcId);
 	std::string nameRoll = rpcsrv.name();
-	if(useMuonDigis_) meMuonCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, "Muon");
-	meNoiseCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup, "Noise");
+	if(useMuonDigis_) meMuonCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup,  muonFolder_);
+	meNoiseCollection[(uint32_t)rpcId] = bookRollME(rpcId,iSetup,  noiseFolder_);
       }
     }
   }//end loop on geometry to book all MEs
@@ -443,9 +443,24 @@ void RPCMonitorDigi::performSourceOperation(  std::map<RPCDetId , std::vector<RP
     os<<"Multiplicity_"<<RPCMonitorDigi::regionNames_[region +1];
     if(meRegion[os.str()]) meRegion[os.str()]->Fill(numDigi);
 
+
     os.str("");
     os<<"Multiplicity_"<<nameRoll;
     if(meMap[os.str()]) meMap[os.str()]->Fill(numDigi);   
+
+
+    os.str("");
+    if(region==0){
+      os<<"Occupancy_for_Barrel";
+      if(meRegion[os.str()]) meRegion[os.str()]->Fill(sector, wheelOrDiskNumber, numDigi);
+    }else{
+      os<<"Occupancy_for_Endcap";
+      int xbin = wheelOrDiskNumber + 3;
+      if(region == -1) xbin = wheelOrDiskNumber + 4;
+      if(xbin > 6) xbin = 6;
+      if(meRegion[os.str()]) meRegion[os.str()]->Fill(xbin, ring, numDigi);
+
+    }
 
   }//end loop on rolls
 
